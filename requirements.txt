@@ -9,3 +9,4 @@ folium
 joblib
 folium
 streamlit_folium
+scikit-learn
