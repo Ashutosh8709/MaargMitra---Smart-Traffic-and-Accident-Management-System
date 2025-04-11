@@ -1,7 +1,6 @@
 Flask==3.1.0
 folium==0.19.5
 fsspec==2025.2.0
-graphi==1.70.0
 h5py==3.12.1
 httpx==0.28.1
 ipykernel==6.29.5
@@ -10,7 +9,7 @@ keras==3.8.0
 lightgbm==4.6.0
 lxml==5.3.1
 matplotlib==3.9.2
-numpy==2.0.2
+numpy==1.25.0
 opencv-python-headless==4.9.0.80
 pandas==2.2.3
 pillow==11.0.0
