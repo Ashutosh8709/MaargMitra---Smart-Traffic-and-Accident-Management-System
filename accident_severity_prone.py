@@ -12,19 +12,38 @@ def download_file(url, filename):
     with open(filename, 'wb') as f:
         f.write(response.content)
 
-def show():
+@st.cache_resource
+def load_rf_model():
     if not os.path.exists("rf_model.pkl"):
         download_file("https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/rf_model.pkl", "rf_model.pkl")
+    return joblib.load("rf_model.pkl")
 
+@st.cache_resource
+def load_encoder():
     if not os.path.exists("encoder.pkl"):
         download_file("https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/encoder.pkl", "encoder.pkl")
+    return joblib.load("encoder.pkl")
 
+@st.cache_resource
+def load_scaler():
     if not os.path.exists("scaler.pkl"):
         download_file("https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/scaler.pkl", "scaler.pkl")
+    return joblib.load("scaler.pkl")
 
-    rf_model = joblib.load("rf_model.pkl")
-    encoder = joblib.load("encoder.pkl")
-    scaler = joblib.load("scaler.pkl")
+@st.cache_data
+def load_accident_map_html():
+    if not os.path.exists("accident_risk_map.html"):
+        download_file("https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/accident_risk_map.html", "accident_risk_map.html")
+    with open("accident_risk_map.html", "r", encoding="utf-8") as file:
+        return file.read()
+
+
+
+def show():
+    
+    rf_model = load_rf_model()
+    encoder = load_encoder()
+    scaler = load_scaler()
     
     
 
@@ -45,13 +64,9 @@ def show():
         st.subheader("🗺️ Accident-Prone Areas in India")
         st.markdown("This map highlights accident-prone areas in India.")
 
-        if not os.path.exists("accident_risk_map.html"):
-            download_file(
-                "https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/accident_risk_map.html",
-                "accident_risk_map.html"
-            )
-        with open("accident_risk_map.html", "r", encoding="utf-8") as file:
-            st.components.v1.html(file.read(), height=600, scrolling=True)
+        
+        accident_map_html = load_accident_map_html()
+        st.components.v1.html(accident_map_html, height=600, scrolling=True)
 
     # 📍 Section 2: Predict Severity Based on User Input
     elif option == "🔍 Predict Accident Severity":
