@@ -7,13 +7,13 @@ import datetime
 import calendar
 
 def load_model():
-    with open('/Users/ashutoshkumar/Desktop/Traffic_Congestion/final_model_1.pkl', 'rb') as f1:
+    with open('https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/final_model_1.pkl', 'rb') as f1:
         data1 = pickle.load(f1)
-    with open('/Users/ashutoshkumar/Desktop/Traffic_Congestion/final_model_2.pkl', 'rb') as f2:
+    with open('https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/final_model_2.pkl', 'rb') as f2:
         data2 = pickle.load(f2)
-    with open('/Users/ashutoshkumar/Desktop/Traffic_Congestion/final_model_3.pkl', 'rb') as f3:
+    with open('https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/final_model_3.pkl', 'rb') as f3:
         data3 = pickle.load(f3)
-    with open('/Users/ashutoshkumar/Desktop/Traffic_Congestion/final_model_4.pkl', 'rb') as f4:
+    with open('https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/final_model_4.pkl', 'rb') as f4:
         data4 = pickle.load(f4)
 
     return data1, data2, data3, data4
