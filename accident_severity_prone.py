@@ -6,9 +6,9 @@ from folium.plugins import MarkerCluster
 from streamlit_folium import folium_static
 def show():
     # 📌 Load Saved Model and Preprocessors
-    rf_model = joblib.load("rf_model.pkl")
-    encoder = joblib.load("encoder.pkl")
-    scaler = joblib.load("scaler.pkl")
+    rf_model = joblib.load("https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/rf_model.pkl")
+    encoder = joblib.load("https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/encoder.pkl")
+    scaler = joblib.load("https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/scaler.pkl")
 
     # 📌 Feature names
     features = ['Road_Type', 'Speed_limit', 'Weather_Conditions', 'Number_of_Vehicles', 'latitude', 'longitude', 'Day_of_Week']
