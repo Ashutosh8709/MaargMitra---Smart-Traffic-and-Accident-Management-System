@@ -44,6 +44,12 @@ def show():
     if option == "📌 View Accident-Prone Areas":
         st.subheader("🗺️ Accident-Prone Areas in India")
         st.markdown("This map highlights accident-prone areas in India.")
+
+        if not os.path.exists("accident_risk_map.html"):
+        download_file(
+            "https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/accident_risk_map.html",
+            "accident_risk_map.html"
+        )
         with open("accident_risk_map.html", "r", encoding="utf-8") as file:
             st.components.v1.html(file.read(), height=600, scrolling=True)
 
