@@ -8,7 +8,7 @@ import time
 from ultralytics import YOLO
 def show_speed_monitor_page():
 # Load YOLOv8 Model
-    model =YOLO("yolov8nMytrained.pt")
+    model =YOLO("https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/yolov8nMytrained.pt")
 
 # Streamlit UI
     st.title("🚦 Real-Time Traffic & Speed Monitoring 🚗")
