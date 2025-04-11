@@ -19,6 +19,8 @@ def download_and_load_pickle(url, local_path):
     with open(local_path, "rb") as f:
         return pickle.load(f)
 
+
+@st.cache_resource
 def load_model():
     base_url = "https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/"
     
