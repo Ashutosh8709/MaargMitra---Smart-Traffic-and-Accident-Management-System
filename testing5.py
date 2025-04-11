@@ -6,30 +6,31 @@ import streamlit as st
 import numpy as np
 import time
 from ultralytics import YOLO
-def show_speed_monitor_page():
-# Load YOLOv8 Model
-    import requests
-    import os
+import requests
 
-    def download_model(url, local_path):
-        if not os.path.exists(local_path):
-            os.makedirs(os.path.dirname(local_path), exist_ok=True)
-            response = requests.get(url)
-            with open(local_path, 'wb') as f:
-                f.write(response.content)
 
-# Define URL and local path
+@st.cache_resource(show_spinner="Downloading and Loading YOLOv8 Model...")
+def load_yolo_model():
     model_url = "https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/yolov8nMytrained.pt"
     model_path = "models/yolov8nMytrained.pt"
 
-# Download the model
-    download_model(model_url, model_path)
+    if not os.path.exists(model_path):
+        os.makedirs(os.path.dirname(model_path), exist_ok=True)
+        response = requests.get(model_url)
+        with open(model_path, 'wb') as f:
+            f.write(response.content)
 
-# Load YOLO model from local path
-    model = YOLO(model_path)
+    return YOLO(model_path)
+    
+def show_speed_monitor_page():
+# Load YOLOv8 Model
+
+    
 
 # Streamlit UI
     st.title("🚦 Real-Time Traffic & Speed Monitoring 🚗")
+
+    model = load_yolo_model()
     # Example of adding a unique key to the file_uploader
     video_file = st.file_uploader("📂 Upload a Video", type=["mp4", "avi", "mov"])
 
