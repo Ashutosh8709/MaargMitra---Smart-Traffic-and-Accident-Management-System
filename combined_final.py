@@ -329,7 +329,7 @@ if st.session_state.nav_option == "home":
 
 
 # Load the uploaded image and encode it to base64
-    with open("/Users/ashutoshkumar/Desktop/ML_PROJECT copy/79a4003c8f4b5c576bd43336da7c78a7.png", "rb") as img_file:
+    with open("79a4003c8f4b5c576bd43336da7c78a7.png", "rb") as img_file:
         encoded_image = base64.b64encode(img_file.read()).decode()
 
     components.html(f"""
