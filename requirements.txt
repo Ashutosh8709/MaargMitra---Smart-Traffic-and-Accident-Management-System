@@ -1,6 +1,5 @@
 torch
 asyncio
-base64
 os
 streamlit
 streamlit.components.v1
