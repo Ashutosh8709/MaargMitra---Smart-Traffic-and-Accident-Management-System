@@ -5,21 +5,34 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import datetime
 import calendar
+import requests
+import os
+
+def download_and_load_pickle(url, local_path):
+    # Download if not already present
+    if not os.path.exists(local_path):
+        os.makedirs(os.path.dirname(local_path), exist_ok=True)
+        response = requests.get(url)
+        with open(local_path, "wb") as f:
+            f.write(response.content)
+    # Load the pickle file
+    with open(local_path, "rb") as f:
+        return pickle.load(f)
 
 def load_model():
-    with open('https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/final_model_1.pkl', 'rb') as f1:
-        data1 = pickle.load(f1)
-    with open('https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/final_model_2.pkl', 'rb') as f2:
-        data2 = pickle.load(f2)
-    with open('https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/final_model_3.pkl', 'rb') as f3:
-        data3 = pickle.load(f3)
-    with open('https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/final_model_4.pkl', 'rb') as f4:
-        data4 = pickle.load(f4)
+    base_url = "https://github.com/Ashutosh8709/Traffic-and-Accident-Management-System/releases/download/v1.0/"
+    
+    data1 = download_and_load_pickle(base_url + "final_model_1.pkl", "models/final_model_1.pkl")
+    data2 = download_and_load_pickle(base_url + "final_model_2.pkl", "models/final_model_2.pkl")
+    data3 = download_and_load_pickle(base_url + "final_model_3.pkl", "models/final_model_3.pkl")
+    data4 = download_and_load_pickle(base_url + "final_model_4.pkl", "models/final_model_4.pkl")
 
     return data1, data2, data3, data4
 
+# Load models
 data1, data2, data3, data4 = load_model()
 
+# Extract actual model objects
 m1 = data1['model']
 m2 = data2['model']
 m3 = data3['model']
