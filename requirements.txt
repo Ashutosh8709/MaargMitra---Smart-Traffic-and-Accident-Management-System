@@ -3,7 +3,7 @@ streamlit
 numpy
 pandas
 matplotlib
-cv2
+opencv-python
 ultralytics
 folium
 joblib
