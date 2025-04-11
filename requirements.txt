@@ -10,3 +10,4 @@ joblib
 streamlit_folium
 scikit-learn
 lightgbm
+requests
