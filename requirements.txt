@@ -1,6 +1,6 @@
 torch
 streamlit
-numpy
+numpy<2
 pandas
 matplotlib
 opencv-python==4.7.0.72
