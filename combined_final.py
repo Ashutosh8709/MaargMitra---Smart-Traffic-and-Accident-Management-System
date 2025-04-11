@@ -1,3 +1,5 @@
+import streamlit as st
+st.set_page_config(page_title="🚦 Traffic Monitoring System", layout="wide")
 import torch
 import asyncio
 import base64
@@ -10,13 +12,11 @@ os.environ["STREAMLIT_DISABLE_WATCHDOG_WARNINGS"] = "true"
 os.environ["STREAMLIT_WATCHER_TYPE"] = "none"
 
 # Imports
-import streamlit as st
 from predict_page import show_predict_page
 from testing5 import show_speed_monitor_page
 from accident_severity_prone import show
 
 # Page config
-st.set_page_config(page_title="🚦 Traffic Monitoring System", layout="wide")
 st.markdown("""
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 """, unsafe_allow_html=True)
